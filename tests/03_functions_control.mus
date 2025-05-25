@@ -1,0 +1,60 @@
+-- Test functions and control flow
+debug(vars)
+debug(funcs)
+
+-- Function definition and calling
+fun add(a => integer, b => integer) {
+    return a + b
+}
+
+fun greet(name => string) {
+    out("Hello, " + name + "!")
+}
+
+-- Function calls
+var sum => integer = add(5, 3)
+out("Sum: " + sum)
+greet("Mus User")
+
+-- If-else statements
+var age => integer = 18
+if (age >= 18) {
+    out("Adult")
+} else {
+    out("Minor")
+}
+
+-- For loop
+out("Counting from 1 to 5:")
+for (var i = 1; i <= 5; i++) {
+    out(i)
+}
+
+-- While loop
+var count => integer = 0
+out("Counting up to 3:")
+while (count < 3) {
+    out("Count: " + count)
+    count = count + 1
+}
+
+-- Nested control structures
+fun checkNumber(n => integer) {
+    if (n > 0) {
+        if (n % 2 == 0) {
+            out(n + " is positive and even")
+        } else {
+            out(n + " is positive and odd")
+        }
+    } else {
+        out(n + " is not positive")
+    }
+}
+
+checkNumber(4)
+checkNumber(7)
+checkNumber(-2)
+
+-- Debug output
+debug(vars)
+debug(funcs) 

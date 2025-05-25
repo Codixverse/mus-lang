@@ -1,0 +1,31 @@
+-- Test array operations
+debug(vars)
+
+-- Array creation and initialization
+var numbers => array<integer> = [1, 2, 3, 4, 5]
+var strings => array<string> = ["apple", "banana", "cherry"]
+
+-- Array access
+out("First number: " + numbers[0])
+out("Second string: " + strings[1])
+
+-- Array operations
+numbers.push(6)
+out("After push: " + numbers)
+out("Array length: " + numbers.length())
+
+-- Array iteration
+for (var i = 0; i < numbers.length(); i++) {
+    out("Number at index " + i + ": " + numbers[i])
+}
+
+-- Array with mixed operations
+var arr => array<integer> = []
+arr.push(10)
+arr.push(20)
+arr.push(30)
+out("Array after multiple pushes: " + arr)
+out("Array length: " + arr.length())
+
+-- Debug output
+debug(vars) 

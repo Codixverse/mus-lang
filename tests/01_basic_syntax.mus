@@ -1,0 +1,26 @@
+-- Test basic syntax and variables
+debug(vars)
+
+-- Variable declarations and assignments
+var num => integer = 42
+var text => string = "Hello Mus"
+var isTrue => boolean = true
+
+-- Output variables
+out("Number: " + num)
+out("Text: " + text)
+out("Boolean: " + isTrue)
+
+-- Type checking
+if (num > 40) {
+    out("Number is greater than 40")
+}
+
+-- String operations
+var str1 => string = "Hello"
+var str2 => string = "World"
+out(str1 + " " + str2)
+out("Length of str1: " + str1.length())
+
+-- Debug output
+debug(vars) 

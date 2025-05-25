@@ -1,0 +1,56 @@
+-- Test object-oriented programming features
+debug(vars)
+debug(classes)
+
+-- Base class
+class Animal {
+    var name => string = "Unknown"
+    var age => integer = 0
+    
+    fun makeSound() {
+        out("Some generic animal sound")
+    }
+    
+    fun introduce() {
+        out("I am " + name + " and I am " + age + " years old")
+    }
+}
+
+-- Derived class
+class Dog extends Animal {
+    var breed => string = "Unknown"
+    
+    fun makeSound() {
+        out("Woof!")
+    }
+    
+    fun fetch() {
+        out(name + " is fetching the ball")
+    }
+}
+
+-- Create instances
+var animal => Animal = new Animal()
+animal.name = "Generic Animal"
+animal.age = 5
+animal.introduce()
+animal.makeSound()
+
+var dog => Dog = new Dog()
+dog.name = "Buddy"
+dog.age = 3
+dog.breed = "Golden Retriever"
+dog.introduce()
+dog.makeSound()
+dog.fetch()
+
+-- Test inheritance
+var animals => array<Animal> = [animal, dog]
+out("\nTesting polymorphism:")
+for (var i = 0; i < animals.length(); i++) {
+    animals[i].makeSound()
+}
+
+-- Debug output
+debug(vars)
+debug(classes) 
