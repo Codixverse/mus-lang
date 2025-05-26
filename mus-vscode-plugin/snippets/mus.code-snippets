@@ -1,0 +1,82 @@
+{
+  "Function Declaration": {
+    "prefix": "fun",
+    "body": [
+      "fun ${1:functionName}(${2:parameters}) {",
+      "\t$0",
+      "}"
+    ],
+    "description": "Create a new function"
+  },
+  "Variable Declaration": {
+    "prefix": "var",
+    "body": [
+      "var ${1:variableName} => ${2:type} = ${3:value}"
+    ],
+    "description": "Declare a new variable"
+  },
+  "If Statement": {
+    "prefix": "if",
+    "body": [
+      "if (${1:condition}) {",
+      "\t$0",
+      "}"
+    ],
+    "description": "Create an if statement"
+  },
+  "If-Else Statement": {
+    "prefix": "ife",
+    "body": [
+      "if (${1:condition}) {",
+      "\t$2",
+      "} else {",
+      "\t$0",
+      "}"
+    ],
+    "description": "Create an if-else statement"
+  },
+  "While Loop": {
+    "prefix": "while",
+    "body": [
+      "while (${1:condition}) {",
+      "\t$0",
+      "}"
+    ],
+    "description": "Create a while loop"
+  },
+  "For Loop": {
+    "prefix": "for",
+    "body": [
+      "for (${1:variable} in ${2:array}) {",
+      "\t$0",
+      "}"
+    ],
+    "description": "Create a for loop"
+  },
+  "Class Declaration": {
+    "prefix": "class",
+    "body": [
+      "class ${1:ClassName} {",
+      "\tconstructor(${2:parameters}) {",
+      "\t\t$3",
+      "\t}",
+      "\t$0",
+      "}"
+    ],
+    "description": "Create a new class"
+  },
+  "Array Declaration": {
+    "prefix": "arr",
+    "body": [
+      "var ${1:arrayName} => array<${2:type}> = [${3:values}]"
+    ],
+    "description": "Declare a new array"
+  },
+  "Print Statement": {
+    "prefix": "out",
+    "body": [
+      "out(${1:value})"
+    ],
+    "description": "Print a value to the console"
+  }
+} 

@@ -1,0 +1,164 @@
+{
+  "name": "mus-language",
+  "displayName": "Mus Language",
+  "description": "Mus language support for VS Code with syntax highlighting, snippets, and language features",
+  "version": "0.2.0",
+  "publisher": "mus-lang",
+  "engines": {
+    "vscode": "^1.60.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Snippets",
+    "Language Packs"
+  ],
+  "activationEvents": [],
+  "capabilities": {
+    "untrustedWorkspaces": {
+      "supported": true
+    }
+  },
+  "main": "./out/extension.js",
+  "contributes": {
+    "languages": [
+      {
+        "id": "mus",
+        "aliases": [
+          "Mus",
+          "mus"
+        ],
+        "extensions": [
+          ".mus"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "mus",
+        "scopeName": "source.mus",
+        "path": "./syntaxes/mus.tmLanguage.json"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "mus",
+        "path": "./snippets/mus.code-snippets"
+      }
+    ],
+    "commands": [
+      {
+        "command": "mus-language.runFile",
+        "title": "Run Mus File"
+      },
+      {
+        "command": "mus-language.debugFile",
+        "title": "Debug Mus File"
+      }
+    ],
+    "configuration": {
+      "title": "Mus Language",
+      "properties": {
+        "musLanguage.enableAutoComplete": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable/disable auto-completion for Mus language"
+        },
+        "musLanguage.formatOnSave": {
+          "type": "boolean",
+          "default": true,
+          "description": "Format Mus files on save"
+        },
+        "musLanguage.suggestKeywords": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable keyword suggestions"
+        },
+        "musLanguage.suggestFunctions": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable function suggestions"
+        },
+        "musLanguage.suggestVariables": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable variable suggestions"
+        },
+        "musLanguage.suggestTypes": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable type suggestions"
+        },
+        "musLanguage.suggestClasses": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable class suggestions"
+        },
+        "musLanguage.enableHover": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable hover information"
+        },
+        "musLanguage.enableSignatureHelp": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable function signature help"
+        },
+        "musLanguage.enableDiagnostics": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable error and warning diagnostics"
+        },
+        "musLanguage.enableCodeLens": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable CodeLens for references and implementations"
+        },
+        "musLanguage.enableFolding": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable code folding"
+        },
+        "musLanguage.enableSymbolProvider": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable document symbol provider for outline view"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "dependencies": {
+    "vscode-languageclient": "^9.0.1",
+    "vscode-languageserver": "^8.1.0",
+    "vscode-languageserver-textdocument": "^1.0.8",
+    "vscode-uri": "^3.0.7"
+  },
+  "devDependencies": {
+    "@types/glob": "^7.1.3",
+    "@types/mocha": "^8.2.2",
+    "@types/node": "14.x",
+    "@types/vscode": "^1.60.0",
+    "@typescript-eslint/eslint-plugin": "^4.26.0",
+    "@typescript-eslint/parser": "^4.26.0",
+    "eslint": "^7.27.0",
+    "glob": "^7.1.7",
+    "mocha": "^8.4.0",
+    "typescript": "^4.3.2",
+    "vscode-test": "^1.5.2"
+  },
+  "bugs": {
+    "url": "https://github.com/Codixverse/mus-lang/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Codixverse/mus-lang/mus-lang.git"
+  }
+}

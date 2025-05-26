@@ -1,0 +1,68 @@
+{
+    "comments": {
+        "lineComment": "--",
+        "blockComment": ["/*", "*/"]
+    },
+    "brackets": [
+        ["{", "}"],
+        ["[", "]"],
+        ["(", ")"],
+        ["<", ">"]
+    ],
+    "autoClosingPairs": [
+        { "open": "{", "close": "}" },
+        { "open": "[", "close": "]" },
+        { "open": "(", "close": ")" },
+        { "open": "<", "close": ">" },
+        { "open": "\"", "close": "\"", "notIn": ["string", "comment"] },
+        { "open": "'", "close": "'", "notIn": ["string", "comment"] }
+    ],
+    "surroundingPairs": [
+        ["{", "}"],
+        ["[", "]"],
+        ["(", ")"],
+        ["<", ">"],
+        ["\"", "\""],
+        ["'", "'"]
+    ],
+    "indentationRules": {
+        "increaseIndentPattern": "^.*\\{[^}\"']*$|^.*\\([^)\"']*$|^\\s*(if|else|elif|while|for|fun|class|interface).*[^;]\\s*$",
+        "decreaseIndentPattern": "^\\s*(\\}|\\)|else|elif)\\s*$"
+    },
+    "folding": {
+        "markers": {
+            "start": "^\\s*//\\s*#?region\\b|^\\s*\\{\\s*$",
+            "end": "^\\s*//\\s*#?endregion\\b|^\\s*\\}\\s*$"
+        }
+    },
+    "wordPattern": "(-?\\d*\\.\\d\\w*)|([^\\`\\~\\!\\@\\#\\%\\^\\&\\*\\(\\)\\-\\=\\+\\[\\{\\]\\}\\\\\\|\\;\\:\\'\\\"\\,\\.\\<\\>\\/\\?\\s]+)",
+    "onEnterRules": [
+        {
+            "beforeText": "^\\s*//\\s*#?region\\b",
+            "afterText": "^\\s*//\\s*#?endregion\\b",
+            "action": {
+                "indent": "indentOutdent",
+                "appendText": "// #region"
+            }
+        },
+        {
+            "beforeText": "^\\s*//\\s*#?endregion\\b",
+            "action": {
+                "indent": "outdent",
+                "appendText": "// #endregion"
+            }
+        },
+        {
+            "beforeText": "^\\s*if.*\\{\\s*$|^\\s*else.*\\{\\s*$|^\\s*elif.*\\{\\s*$|^\\s*while.*\\{\\s*$|^\\s*for.*\\{\\s*$|^\\s*fun.*\\{\\s*$|^\\s*class.*\\{\\s*$",
+            "action": { "indent": "indent" }
+        },
+        {
+            "beforeText": "^\\s*\\{\\s*$",
+            "action": { "indent": "indent" }
+        },
+        {
+            "beforeText": "^\\s*\\}\\s*$",
+            "action": { "indent": "outdent" }
+        }
+    ]
+}

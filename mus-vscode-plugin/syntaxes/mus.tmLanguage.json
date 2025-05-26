@@ -1,0 +1,358 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "Mus",
+  "fileTypes": ["mus"],
+  "patterns": [
+    { "include": "#comments" },
+    { "include": "#keywords" },
+    { "include": "#strings" },
+    { "include": "#classes" },
+    { "include": "#types" },
+    { "include": "#function-declarations" },
+    { "include": "#function-calls" },
+    { "include": "#variables" },
+    { "include": "#constants" },
+    { "include": "#operators" },
+    { "include": "#arrays" },
+    { "include": "#numbers" },
+    { "include": "#brackets" },
+    { "include": "#punctuation" },
+    { "include": "#colors" }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        {
+          "name": "comment.line.double-dash.mus",
+          "match": "--.*$"
+        },
+        {
+          "name": "comment.block.mus",
+          "begin": "/\\*",
+          "end": "\\*/",
+          "patterns": [
+            {
+              "name": "comment.block.mus",
+              "match": "\\*/"
+            }
+          ]
+        }
+      ]
+    },
+    "keywords": {
+      "patterns": [
+        {
+          "name": "keyword.control.flow.mus",
+          "match": "\\b(if|else|elif|while|for|in|return|break|continue)\\b"
+        },
+        {
+          "name": "keyword.control.exception.mus",
+          "match": "\\b(try|catch|finally|throw)\\b"
+        },
+        {
+          "name": "keyword.control.switch.mus",
+          "match": "\\b(switch|case|default)\\b"
+        },
+        {
+          "name": "keyword.declaration.mus",
+          "match": "\\b(var|const|fun|class|interface|type|enum|extends)\\b"
+        },
+        {
+          "name": "keyword.other.module.mus",
+          "match": "\\b(import|from|export|module|namespace)\\b"
+        },
+        {
+          "name": "keyword.operator.logical.mus",
+          "match": "\\b(and|or|not)\\b"
+        },
+        {
+          "name": "keyword.operator.type.mus",
+          "match": "\\b(is|as|instanceof|typeof)\\b"
+        }
+      ]
+    },
+    "classes": {
+      "patterns": [
+        {
+          "match": "(class)\\s+([A-Za-z_][A-Za-z0-9_]*)\\s*(extends)?\\s*([A-Za-z_][A-Za-z0-9_]*)?",
+          "captures": {
+            "1": { "name": "keyword.declaration.class.mus" },
+            "2": { "name": "entity.name.type.class.declaration.mus" },
+            "3": { "name": "keyword.other.extends.mus" },
+            "4": { "name": "entity.name.type.class.declaration.mus" }
+          }
+        },
+        {
+          "match": "\\b([A-Z][A-Za-z0-9_]*)\\b",
+          "captures": {
+            "1": { "name": "entity.name.type.class.declaration.mus" }
+          }
+        }
+      ]
+    },
+    "types": {
+      "patterns": [
+        {
+          "name": "storage.type.mus",
+          "match": "\\b(string|integer|boolean|number|float|double|char|byte|short|long|array|void|any|object|dynamic|never|unknown|color|rgb|rgba|hex)\\b"
+        },
+        {
+          "match": "\\s*(string|integer|boolean|number|float|double|char|byte|short|long|array|void|any|object|dynamic|never|unknown|color|rgb|rgba|hex)\\b",
+          "captures": {
+            "1": { "name": "storage.type.mus" }
+          }
+        },
+        {
+          "match": "\\b([A-Z][A-Za-z0-9_]*)\\b",
+          "captures": {
+            "1": { "name": "storage.type.class.reference.green.mus" }
+          }
+        },
+        {
+          "match": ":\\s*([A-Za-z_][A-Za-z0-9_<>]*)",
+          "captures": {
+            "1": { "name": "storage.type.mus" }
+          }
+        }
+      ]
+    },
+    "strings": {
+      "name": "string.quoted.double.mus",
+      "begin": "\"",
+      "end": "\"",
+      "patterns": [
+        {
+          "name": "constant.character.escape.special.mus",
+          "match": "\\\\[abfnrtv]"
+        },
+        {
+          "name": "constant.character.escape.hex.mus",
+          "match": "\\\\x[0-9A-Fa-f]{2}"
+        },
+        {
+          "name": "constant.character.escape.unicode.mus",
+          "match": "\\\\u[0-9A-Fa-f]{4}"
+        },
+        {
+          "name": "constant.character.escape.unicode.long.mus",
+          "match": "\\\\U[0-9A-Fa-f]{8}"
+        },
+        {
+          "name": "constant.character.escape.octal.mus",
+          "match": "\\\\[0-7]{3}"
+        },
+        {
+          "name": "constant.character.escape.mus",
+          "match": "\\\\."
+        }
+      ]
+    },
+    "numbers": {
+      "patterns": [
+        {
+          "name": "constant.numeric.decimal.mus",
+          "match": "\\b\\d+(\\.\\d+)?([eE][+-]?\\d+)?\\b"
+        },
+        {
+          "name": "constant.numeric.hex.mus",
+          "match": "\\b0x[0-9A-Fa-f]+\\b"
+        },
+        {
+          "name": "constant.numeric.binary.mus",
+          "match": "\\b0b[01]+\\b"
+        },
+        {
+          "name": "constant.numeric.octal.mus",
+          "match": "\\b0o[0-7]+\\b"
+        }
+      ]
+    },
+    "function-declarations": {
+      "patterns": [
+        {
+          "match": "\\b(fun)\\s+([a-zA-Z_][a-zA-Z0-9_]*)\\s*\\(",
+          "captures": {
+            "1": { "name": "keyword.declaration.function.mus" },
+            "2": { "name": "entity.name.function.declaration.mus" }
+          }
+        },
+        {
+          "match": "\\b([a-zA-Z_][a-zA-Z0-9_]*)\\s*:\\s*([a-zA-Z_][a-zA-Z0-9_<>]*)\\s*=>",
+          "captures": {
+            "1": { "name": "entity.name.function.parameter.mus" },
+            "2": { "name": "storage.type.mus" }
+          }
+        }
+      ]
+    },
+    "function-calls": {
+      "patterns": [
+        {
+          "match": "\\b(out|error|warn|print|debug|log|assert)\\s*\\(",
+          "captures": {
+            "1": { "name": "support.function.builtin.mus" }
+          }
+        },
+        {
+          "match": "\\b([a-zA-Z_][a-zA-Z0-9_]*)\\s*\\(",
+          "captures": {
+            "1": { "name": "entity.name.function.call.mus" }
+          }
+        }
+      ]
+    },
+    "variables": {
+      "patterns": [
+        {
+          "match": "\\b(var|const|let)\\s+([a-zA-Z_][a-zA-Z0-9_]*)\\s*:\\s*([a-zA-Z_][a-zA-Z0-9_<>]*)",
+          "captures": {
+            "1": { "name": "keyword.declaration.variable.mus" },
+            "2": { "name": "variable.other.declaration.mus" },
+            "3": { "name": "storage.type.mus" }
+          }
+        },
+        {
+          "match": "\\b([a-zA-Z_][a-zA-Z0-9_]*)\\s*\\[",
+          "captures": {
+            "1": { "name": "variable.other.array.mus" }
+          }
+        },
+        {
+          "match": "\\b([a-zA-Z_][a-zA-Z0-9_]*)\\s*\\.",
+          "captures": {
+            "1": { "name": "variable.other.object.mus" }
+          }
+        },
+        {
+          "name": "variable.other.mus",
+          "match": "\\b[a-zA-Z_]\\w*\\b"
+        }
+      ]
+    },
+    "constants": {
+      "patterns": [
+        {
+          "name": "constant.language.boolean.mus",
+          "match": "\\b(true|false)\\b",
+          "captures": {
+            "1": { "name": "constant.language.boolean.mus" }
+          }
+        },
+        {
+          "name": "constant.language.null.mus",
+          "match": "\\b(null|undefined)\\b"
+        },
+        {
+          "name": "constant.language.numeric.special.mus",
+          "match": "\\b(NaN|Infinity)\\b"
+        }
+      ]
+    },
+    "operators": {
+      "patterns": [
+        {
+          "name": "keyword.operator.arithmetic.mus",
+          "match": "[+\\-*/%]|\\*\\*|\\+\\+|\\-\\-"
+        },
+        {
+          "name": "keyword.operator.comparison.mus",
+          "match": "==|!=|<=|>=|<|>|===|!==|\\?\\?"
+        },
+        {
+          "name": "keyword.operator.assignment.mus",
+          "match": "=|\\+=|\\-=|\\*=|/=|%=|\\*\\*=|&=|\\|=|\\^=|<<=|>>=|>>>=|\\?\\?="
+        },
+        {
+          "name": "keyword.operator.logical.mus",
+          "match": "&&|\\|\\||!|\\?"
+        },
+        {
+          "name": "keyword.operator.bitwise.mus",
+          "match": "&|\\||\\^|~|<<|>>|>>>"
+        }
+      ]
+    },
+    "arrays": {
+      "patterns": [
+        {
+          "match": "\\b(array)<([a-zA-Z_][a-zA-Z0-9_]*)>",
+          "captures": {
+            "1": { "name": "storage.type.array.mus" },
+            "2": { "name": "storage.type.array.element.mus" }
+          }
+        },
+        {
+          "begin": "\\[",
+          "end": "\\]",
+          "name": "meta.array.literal.mus",
+          "patterns": [
+            { "include": "#constants" },
+            { "include": "#strings" },
+            { "include": "#numbers" },
+            {
+              "match": ",",
+              "name": "punctuation.separator.array.mus"
+            }
+          ]
+        }
+      ]
+    },
+    "brackets": {
+      "patterns": [
+        {
+          "name": "punctuation.definition.bracket.round.mus",
+          "match": "\\(|\\)"
+        },
+        {
+          "name": "punctuation.definition.bracket.square.mus",
+          "match": "\\[|\\]"
+        },
+        {
+          "name": "punctuation.definition.bracket.curly.mus",
+          "match": "\\{|\\}"
+        },
+        {
+          "name": "punctuation.definition.bracket.angle.mus",
+          "match": "<|>"
+        }
+      ]
+    },
+    "punctuation": {
+      "patterns": [
+        {
+          "name": "punctuation.terminator.statement.mus",
+          "match": ";"
+        },
+        {
+          "name": "punctuation.separator.parameter.mus",
+          "match": ","
+        },
+        {
+          "name": "punctuation.separator.key-value.mus",
+          "match": ":"
+        },
+        {
+          "name": "punctuation.accessor.mus",
+          "match": "\\."
+        }
+      ]
+    },
+    "colors": {
+      "patterns": [
+        {
+          "name": "constant.language.color.mus",
+          "match": "\\b(red|green|blue|yellow|cyan|magenta|black|white|gray|purple|orange|brown|pink)\\b"
+        },
+        {
+          "name": "constant.language.color.hex.mus",
+          "match": "#([0-9a-fA-F]{6}|[0-9a-fA-F]{3})"
+        },
+        {
+          "name": "constant.language.color.rgb.mus",
+          "match": "\\b(rgb|rgba)\\s*\\(\\s*\\d{1,3}\\s*,\\s*\\d{1,3}\\s*,\\s*\\d{1,3}\\s*(,\\s*[0-9.]+)?\\s*\\)"
+        }
+      ]
+    }
+  },
+  "scopeName": "source.mus"
+}
