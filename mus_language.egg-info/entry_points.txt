@@ -1,0 +1,2 @@
+[console_scripts]
+mus = run_mus:main

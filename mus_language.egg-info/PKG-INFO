@@ -1,3 +1,26 @@
+Metadata-Version: 2.4
+Name: mus-language
+Version: 1.0.0
+Summary: Mus Programming Language Interpreter
+Home-page: https://github.com/yourusername/mus-language
+Author: Your Name
+Author-email: your.email@example.com
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+Requires-Dist: colorama>=0.4.6
+Dynamic: author
+Dynamic: author-email
+Dynamic: classifier
+Dynamic: description
+Dynamic: description-content-type
+Dynamic: home-page
+Dynamic: requires-dist
+Dynamic: requires-python
+Dynamic: summary
+
 # Mus Programming Language
 
 A modern, strongly-typed, object-oriented programming language for learning and rapid prototyping.
